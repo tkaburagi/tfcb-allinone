@@ -1,3 +1,3 @@
 output "public-ip" {
-  value = aws_instance.foo[count.index].public_ip
+  value = aws_instance.foo.public_ip
 }
