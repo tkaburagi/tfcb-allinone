@@ -1,3 +1,3 @@
 output "public-ip" {
-  value = aws_instance.hello-tf-instance.public_ip
+  value = aws_instance.foo[count.index].public_ip
 }
