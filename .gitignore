@@ -1,0 +1,5 @@
+hosted-agent-local-mysql/.terraform
+hosted-agent-local-mysql/.vagrant
+hosted-agent-local-mysql/terraform.tfstate*
+/**/mock*
+/**/.sentinel

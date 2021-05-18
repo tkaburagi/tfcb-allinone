@@ -1,0 +1,30 @@
+import "tfplan/v2" as tfplan
+import "tfstate/v2" as tfstate
+import "strings"
+
+
+nginxServicePlanned = filter tfplan.planned_values.resources as _, resources {
+	resources.type is "kubernetes_service"
+}
+
+nginxServiceStatus = filter tfstate.resources as _, resources {
+    resources.type is "kubernetes_service"
+}
+
+spec = nginxServiceStatus["kubernetes_service.nginx_service"]["values"]["spec"]
+specPortList = spec[0].port
+specPort = specPortList[0].port
+
+public_port_change_restrictor = rule {
+	all nginxServicePlanned as _, nsp {
+		all nsp.values.spec as _, spec {
+		    all spec.port as _, port {
+		        port.port is specPort
+            }
+        }
+    }
+}
+
+main = rule {
+    public_port_change_restrictor
+}
