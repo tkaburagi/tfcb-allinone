@@ -20,7 +20,6 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.google_container_cluster.primary.master_auth[0].cluster_ca_certificate)
   client_certificate = base64decode(data.google_container_cluster.primary.master_auth[0].client_certificate)
   client_key = base64decode(data.google_container_cluster.primary.master_auth[0].client_key)
-  load_config_file = "false"
 }
 
 resource "kubernetes_namespace" "tf-demo" {
@@ -39,6 +38,7 @@ resource "kubernetes_service" "nginx_service" {
     }
     session_affinity = "ClientIP"
     port {
+      //policy check
       port        = 8080
       target_port = 80
     }
@@ -59,6 +59,7 @@ resource "kubernetes_deployment" "nginx" {
     replicas = 3
 
     strategy {
+      //policy check
       type = "RollingUpdate"
     }
 
@@ -90,6 +91,7 @@ resource "kubernetes_deployment" "nginx" {
               memory = "50Mi"
             }
           }
+          //policy check
           liveness_probe {
             http_get {
               path = "/"
