@@ -1,13 +1,5 @@
 terraform {
   required_version = "~> 0.12"
-  backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "tkaburagi"
-
-    workspaces {
-      name = "k8s-deployment"
-    }
-  }
 }
 
 provider "google" {
