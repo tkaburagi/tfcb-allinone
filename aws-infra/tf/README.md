@@ -4,7 +4,7 @@ EC2インスタンスをプロビジョニングするためのシンプルな�
 
 ## Diagram
 
-![](../diagram.png)
+![](https://raw.githubusercontent.com/tkaburagi/tfcb-allinone/main/aws-infra/diagram.png)
 
 
 ## Applied Policy
