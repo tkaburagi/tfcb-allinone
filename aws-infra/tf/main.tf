@@ -62,7 +62,10 @@ resource "aws_instance" "foo" {
   ami = var.ami
   count = var.hello_tf_instance_count
   instance_type = var.hello_tf_instance_type
-
+  tags = {
+    owner = "me"
+    ttl   = "100"
+  }
   network_interface {
     network_interface_id = aws_network_interface.foo.id
     device_index = 0

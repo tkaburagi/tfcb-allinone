@@ -2,14 +2,12 @@ import "tfplan/v2" as tfplan
 
 security_groups = filter tfplan.resource_changes as _, rc {
 	rc.mode is "managed" and
-		rc.type is "aws_security_group" and
-		rc.actions is not ["delete"]
+		rc.type is "aws_security_group"
 }
 
+egress = security_groups["aws_security_group.allow_tls"]["change"]["after"]["egress"]
+cidr = egress[0].cidr_blocks
+
 main = rule {
-	all security_groups as _, sg {
-		all sg.change.after.egress as egress {
-			egress.cidr_blocks not contains "0.0.0.0/0"
-		}
-	}
+    cidr not contains "0.0.0.0/0"
 }
