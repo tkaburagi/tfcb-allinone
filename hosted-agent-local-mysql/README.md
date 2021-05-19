@@ -4,4 +4,4 @@ Hosted Agentを利用してTerraform Cloud BusinessからローカルのPCのMyS
 
 ## Diagram
 
-![](diagram.png)
+![](https://raw.githubusercontent.com/tkaburagi/tfcb-allinone/main/hosted-agent-)
