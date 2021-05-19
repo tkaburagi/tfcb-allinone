@@ -6,5 +6,5 @@ variable "hello_tf_instance_count" {
   default = 1
 }
 variable "hello_tf_instance_type" {
-  default = "t2.micro"
+  default = "t2.large"
 }
