@@ -16,28 +16,3 @@ main = rule {
         tags contains t
     }
 }
-
-#Validate that all instances of a specified resource type being modified
-#have a specified top-level attribute in a given list
-
-validate_attribute_in_list = func(type, attribute, allowed_values) {
-
-    validated = true
-
-    #Get all resource instances of the specified type
-    resource_instances = find_resources_from_plan(type)
-
-     #Loop through the resource instances
-    for resource_instances as address, r {
-
-        #Skip resource instances that are being destroyed
-        #to avoid unnecessary policy violations
-
-        if r.destroy and not r.requires_new {
-            continue
-        }
-
-    }
-
-    return validated
-}
