@@ -17,5 +17,5 @@ provider "mysql" {
 
 # Create a Database
 resource "mysql_database" "app" {
-  name = "my_awesome_app"
+  name = "my_awesome_app_demotoday"
 }
