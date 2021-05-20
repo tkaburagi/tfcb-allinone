@@ -39,7 +39,7 @@ resource "kubernetes_service" "nginx_service" {
     session_affinity = "ClientIP"
     port {
       //policy check
-      port        = 8080
+      port        = 9090
       target_port = 80
     }
 
@@ -56,11 +56,11 @@ resource "kubernetes_deployment" "nginx" {
   }
 
   spec {
-    replicas = 2
+    replicas = 3
 
     strategy {
       //policy check
-      type = "RollingUpdate"
+      type = "Recreate"
     }
 
     selector {
