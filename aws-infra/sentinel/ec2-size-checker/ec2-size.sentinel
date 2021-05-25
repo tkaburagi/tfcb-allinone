@@ -12,10 +12,6 @@ get_resources = func(type) {
 get_resources_root_only = func(type) {
 	resources = []
 	named_and_counted_resources = tfplan.resources[type] else {}
-	# Get resource bodies out of nested resource maps, from:
-	# {"name": {"0": {"applied": {...}, "diff": {...} }, "1": {...}}, "name": {...}}
-	# to:
-	# [{"applied": {...}, "diff": {...}}, {"applied": {...}, "diff": {...}}, ...]
 	for named_and_counted_resources as _, instances {
 		for instances as _, body {
 			append(resources, body)
@@ -28,10 +24,6 @@ get_resources_all_modules = func(type) {
 	resources = []
 	for tfplan.module_paths as path {
 		named_and_counted_resources = tfplan.module(path).resources[type] else {}
-		# Get resource bodies out of nested resource maps, from:
-		# {"name": {"0": {"applied": {...}, "diff": {...} }, "1": {...}}, "name": {...}}
-		# to:
-		# [{"applied": {...}, "diff": {...}}, {"applied": {...}, "diff": {...}}, ...]
 		for named_and_counted_resources as _, instances {
 			for instances as _, body {
 				append(resources, body)
