@@ -3,7 +3,7 @@ variable "secret_key" {}
 variable "region" {}
 variable "ami" {}
 variable "hello_tf_instance_count" {
-  default = 
+  default = 5
 }
 variable "hello_tf_instance_type" {
   default = "t2.large"
