@@ -3,8 +3,4 @@ hosted-agent-local-mysql/.vagrant
 hosted-agent-local-mysql/terraform.tfstate*
 /**/mock*
 /**/.sentinel
-<<<<<<< HEAD
-.idea
-=======
 .idea/
->>>>>>> 0be42d5c6f5f84f73469268aedb7826676b78a8d
