@@ -1,5 +1,4 @@
 terraform {
-  required_version = " 0.15.3"
 }
 
 provider "aws" {
@@ -63,7 +62,12 @@ resource "aws_instance" "foo" {
   count = var.hello_tf_instance_count
   instance_type = var.hello_tf_instance_type
   tags = {
+<<<<<<< HEAD
     owner = "me"
+=======
+    owner = "me",
+    ttl = "10"
+>>>>>>> a6c31aba8f3b764ff44769292dc79c0ca6c46e0d
   }
   network_interface {
     network_interface_id = aws_network_interface.foo.id
