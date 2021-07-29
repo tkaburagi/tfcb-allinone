@@ -67,7 +67,10 @@ resource "aws_instance" "foo" {
 =======
     owner = "me",
     ttl = "10"
+<<<<<<< HEAD
 >>>>>>> a6c31aba8f3b764ff44769292dc79c0ca6c46e0d
+=======
+>>>>>>> 1663d86457919f5c0a9c673f615cc498e6b131d3
   }
   network_interface {
     network_interface_id = aws_network_interface.foo.id
