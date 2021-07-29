@@ -13,18 +13,18 @@ resource "aws_security_group" "allow_tls" {
   vpc_id      = aws_vpc.my_vpc.id
 
   ingress {
-    description      = "TLS from VPC"
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.my_vpc.cidr_block]
+    description = "TLS from VPC"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [aws_vpc.my_vpc.cidr_block]
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
@@ -41,8 +41,8 @@ resource "aws_vpc" "my_vpc" {
 }
 
 resource "aws_subnet" "my_subnet" {
-  vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "172.16.10.0/24"
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "172.16.10.0/24"
   tags = {
     Name = "tf-example"
   }
@@ -58,22 +58,15 @@ resource "aws_network_interface" "foo" {
 }
 
 resource "aws_instance" "foo" {
-  ami = var.ami
-  count = var.hello_tf_instance_count
+  ami           = var.ami
+  count         = var.hello_tf_instance_count
   instance_type = var.hello_tf_instance_type
   tags = {
-<<<<<<< HEAD
-    owner = "me"
-=======
     owner = "me",
-    ttl = "10"
-<<<<<<< HEAD
->>>>>>> a6c31aba8f3b764ff44769292dc79c0ca6c46e0d
-=======
->>>>>>> 1663d86457919f5c0a9c673f615cc498e6b131d3
+    ttl   = "10"
   }
   network_interface {
     network_interface_id = aws_network_interface.foo.id
-    device_index = 0
+    device_index         = 0
   }
 }
