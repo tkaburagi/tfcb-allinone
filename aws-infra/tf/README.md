@@ -11,4 +11,4 @@ EC2インスタンスをプロビジョニングするためのシンプルな�
 
 * `ec2-size-checker`: EC2インスタンスの`t2.nano`, `t2.micro`, `t2.small` のみの利用を許可 (soft-mandatory)
 * `ec2-tags-checker`: EC2インスタンスに`ttl`タグを付与する (soft-mandatory)
-* `vpc-cidr-checher`: VPCのCIDRブロックで`0.0.0.0/1`を許容しない (hard-mandatory)
+* `vpc-cidr-checker`: VPCのCIDRブロックで`0.0.0.0/0`を許容しない (hard-mandatory)
