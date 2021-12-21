@@ -24,7 +24,7 @@ resource "aws_security_group" "allow_tls" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["172.16.0.0/16"]
   }
 
   tags = {
@@ -62,7 +62,8 @@ resource "aws_instance" "foo" {
   count         = var.hello_tf_instance_count
   instance_type = var.hello_tf_instance_type
   tags = {
-    owner = "me"
+    owner = "me",
+    ttl = "110"
   }
   network_interface {
     network_interface_id = aws_network_interface.foo.id
